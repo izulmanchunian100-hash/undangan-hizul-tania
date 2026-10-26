@@ -1,213 +1,239 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#10100e">
-  <meta name="description" content="Undangan pernikahan Hizul & Tania. Dengan penuh rasa syukur, kami mengundang Anda untuk merayakan hari bahagia kami.">
-  <title>Hizul & Tania — The Wedding</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a1a3f" />
+  <title>Hizul & Tania — The Royal Wedding</title>
+  <meta name="description" content="Undangan pernikahan Hizul Wahyudin & Tania Renata — 03 Juli 2026" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="invitation-locked">
+<body>
 
-  <!-- Sampul pembuka: dua daun pintu bergerak membuka saat tombol ditekan -->
-  <div class="door-intro" id="doorIntro" role="dialog" aria-label="Sampul undangan pernikahan Hizul dan Tania">
-    <div class="door-atmosphere" aria-hidden="true"></div>
-    <div class="door-panel door-panel-left" aria-hidden="true"></div>
-    <div class="door-panel door-panel-right" aria-hidden="true"></div>
-    <div class="door-frame-glow" aria-hidden="true"></div>
-    <div class="door-cover-copy">
-      <p class="door-kicker">THE WEDDING OF</p>
-      <h1>Hizul <span>&amp;</span> Tania</h1>
-      <p class="door-tagline">Satu Hati · Satu Jalan · Selamanya</p>
-      <button class="door-open-button" id="openInvitation" type="button"><span class="door-icon" aria-hidden="true">♧</span> Buka Undangan <span class="door-arrow" aria-hidden="true">↗</span></button>
-      <p class="door-hint">Sebuah kisah indah menanti untuk dibuka</p>
+  <!-- ========== OPENING / ENTER ROYAL KINGDOM ========== -->
+  <section id="opening" class="opening">
+    <canvas id="stars-canvas"></canvas>
+    <div class="opening-fog"></div>
+    <div class="gate-frame">
+      <div class="tree tree-left">
+        <div class="tree-crown"></div>
+      </div>
+      <div class="tree tree-right">
+        <div class="tree-crown"></div>
+      </div>
+      <div class="birds">
+        <span class="bird b1">🕊️</span>
+        <span class="bird b2">🕊️</span>
+        <span class="bird b3">🕊️</span>
+      </div>
+      <div class="gate-inner">
+        <p class="opening-eyebrow">THE WEDDING OF</p>
+        <h1 class="opening-names">Hizul Wahyudin<br><span>&</span><br>Tania Renata</h1>
+        <p class="opening-tagline">A Royal Fairytale Begins</p>
+        <div class="guest-box">
+          <p class="guest-label">Kepada</p>
+          <p id="guest-name" class="guest-name">Tamu Undangan</p>
+        </div>
+        <button id="btn-open" class="btn-gold">
+          <span>BUKA UNDANGAN</span>
+        </button>
+      </div>
     </div>
-    <div class="door-bottom-ornament" aria-hidden="true">✧ &nbsp; ✦ &nbsp; ✧</div>
-  </div>
+  </section>
 
-  <!-- Bingkai botani 3D bergerak di kedua sisi -->
-  <div class="side-frame left" aria-hidden="true">
-    <svg class="botanical-vine" viewBox="0 0 180 1000" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="stemGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4df9c"/><stop offset=".5" stop-color="#71884b"/><stop offset="1" stop-color="#b68a3d"/></linearGradient>
-        <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d6bd70"/><stop offset=".5" stop-color="#738b49"/><stop offset="1" stop-color="#243b25"/></linearGradient>
-        <radialGradient id="petalGold"><stop stop-color="#fff4c9"/><stop offset=".6" stop-color="#d8b56d"/><stop offset="1" stop-color="#94672e"/></radialGradient>
-        <filter id="softGlow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      </defs>
-      <path class="main-stem" d="M22 -20 C72 70 18 135 57 225 S20 380 67 475 S26 640 77 750 S48 910 100 1020"/>
-      <path class="branch" d="M48 150 Q93 122 100 83 M42 325 Q7 298 9 265 M58 510 Q108 480 120 438 M62 700 Q18 665 13 625 M80 865 Q128 835 139 790"/>
-      <g class="leaf" transform="translate(83 120) rotate(25)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
-      <g class="leaf" transform="translate(35 193) rotate(195)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
-      <g class="leaf" transform="translate(89 290) rotate(18)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
-      <g class="leaf" transform="translate(29 400) rotate(205)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
-      <g class="leaf" transform="translate(100 570) rotate(24)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
-      <g class="leaf" transform="translate(42 660) rotate(200)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
-      <g class="leaf" transform="translate(108 820) rotate(24)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
-      <g class="flower" transform="translate(80 230)"><ellipse cy="-17" rx="10" ry="20"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(60)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(120)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(180)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(240)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(300)"/><circle class="flower-core" r="9"/></g>
-      <g class="flower flower-small" transform="translate(37 470)"><ellipse cy="-17" rx="10" ry="20"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(60)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(120)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(180)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(240)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(300)"/><circle class="flower-core" r="9"/></g>
-      <g class="flower" transform="translate(105 710) scale(.85)"><ellipse cy="-17" rx="10" ry="20"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(60)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(120)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(180)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(240)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(300)"/><circle class="flower-core" r="9"/></g>
-    </svg>
-    <svg class="flying-bird bird-a" viewBox="0 0 100 65"><path d="M5 38 Q25 6 48 30 Q66 5 95 13 Q75 28 64 41 Q42 24 28 45 Q16 51 5 38Z"/><path d="M47 31 Q49 48 35 58 Q54 53 58 39Z"/></svg>
-    <svg class="flying-bird bird-b" viewBox="0 0 100 65"><path d="M5 38 Q25 6 48 30 Q66 5 95 13 Q75 28 64 41 Q42 24 28 45 Q16 51 5 38Z"/><path d="M47 31 Q49 48 35 58 Q54 53 58 39Z"/></svg>
-    <i class="glow-bug bug-one"></i><i class="glow-bug bug-two"></i>
-  </div>
-  <div class="side-frame right" aria-hidden="true">
-    <svg class="botanical-vine" viewBox="0 0 180 1000" preserveAspectRatio="none">
-      <defs><linearGradient id="stemGoldR" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4df9c"/><stop offset=".5" stop-color="#71884b"/><stop offset="1" stop-color="#b68a3d"/></linearGradient><linearGradient id="leafGreenR" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d6bd70"/><stop offset=".5" stop-color="#738b49"/><stop offset="1" stop-color="#243b25"/></linearGradient><radialGradient id="petalGoldR"><stop stop-color="#fff4c9"/><stop offset=".6" stop-color="#d8b56d"/><stop offset="1" stop-color="#94672e"/></radialGradient></defs>
-      <path class="main-stem" d="M22 -20 C72 70 18 135 57 225 S20 380 67 475 S26 640 77 750 S48 910 100 1020"/>
-      <path class="branch" d="M48 150 Q93 122 100 83 M42 325 Q7 298 9 265 M58 510 Q108 480 120 438 M62 700 Q18 665 13 625 M80 865 Q128 835 139 790"/>
-      <g class="leaf" transform="translate(83 120) rotate(25)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g><g class="leaf" transform="translate(35 193) rotate(195)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g><g class="leaf" transform="translate(89 290) rotate(18)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g><g class="leaf" transform="translate(29 400) rotate(205)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g><g class="leaf" transform="translate(100 570) rotate(24)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g><g class="leaf" transform="translate(42 660) rotate(200)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g><g class="leaf" transform="translate(108 820) rotate(24)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
-      <g class="flower" transform="translate(80 230)"><ellipse cy="-17" rx="10" ry="20"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(60)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(120)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(180)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(240)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(300)"/><circle class="flower-core" r="9"/></g><g class="flower flower-small" transform="translate(37 470)"><ellipse cy="-17" rx="10" ry="20"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(60)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(120)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(180)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(240)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(300)"/><circle class="flower-core" r="9"/></g><g class="flower" transform="translate(105 710) scale(.85)"><ellipse cy="-17" rx="10" ry="20"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(60)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(120)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(180)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(240)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(300)"/><circle class="flower-core" r="9"/></g>
-    </svg>
-    <svg class="flying-bird bird-a" viewBox="0 0 100 65"><path d="M5 38 Q25 6 48 30 Q66 5 95 13 Q75 28 64 41 Q42 24 28 45 Q16 51 5 38Z"/><path d="M47 31 Q49 48 35 58 Q54 53 58 39Z"/></svg><svg class="flying-bird bird-b" viewBox="0 0 100 65"><path d="M5 38 Q25 6 48 30 Q66 5 95 13 Q75 28 64 41 Q42 24 28 45 Q16 51 5 38Z"/><path d="M47 31 Q49 48 35 58 Q54 53 58 39Z"/></svg><i class="glow-bug bug-one"></i><i class="glow-bug bug-two"></i>
-  </div>
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="main-content" class="hidden">
 
-  <div class="ambient" aria-hidden="true">
-    <span class="orb orb-one"></span><span class="orb orb-two"></span>
-    <div class="sparkles" id="sparkles"></div>
-  </div>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <ul>
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#couple">Mempelai</a></li>
+        <li><a href="#story">Love Story</a></li>
+        <li><a href="#event">Acara</a></li>
+        <li><a href="#gallery">Galeri</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
+        <li><a href="#gift">Gift</a></li>
+      </ul>
+    </nav>
 
-  <button class="music-toggle" id="musicToggle" aria-label="Putar atau jeda musik" title="Musik latar">
-    <span class="music-icon">♫</span><span id="musicLabel">Musik</span>
-  </button>
-  <!-- Opsional: tambahkan file musik legal milik sendiri ke assets/music.mp3 -->
-  <audio id="weddingMusic" loop preload="none">
-    <source src="assets/music.mp3" type="audio/mpeg">
-  </audio>
-
-  <main>
-    <section class="hero section" id="home">
-      <div class="hero-frame glass tilt-card">
-        <div class="top-label"><span></span> THE WEDDING OF <span></span></div>
-        <p class="eyebrow">Together with our families</p>
-        <h1 class="names"><span>Hizul</span><i>&</i><span>Tania</span></h1>
-        <div class="gold-line"></div>
-        <p class="hero-date" data-event-date>Sabtu, 20 Desember 2026</p>
-        <p class="hero-location">Dengan penuh cinta, kami mengundang Anda<br>untuk menjadi bagian dari hari istimewa kami.</p>
-        <div class="hero-photo-wrap">
-          <img class="hero-photo" src="assets/prewedding.jpg" alt="Foto prewedding Hizul dan Tania" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';">
-          <div class="photo-shine"></div>
-        </div>
-        <a class="button button-gold" href="#invitation">Lihat Undangan <span>↓</span></a>
-        <p class="small-note">Kepada Yth. Bapak/Ibu/Saudara/i</p>
-      </div>
-      <div class="scroll-hint"><span></span> SCROLL TO EXPLORE</div>
+    <!-- HERO -->
+    <section id="home" class="section hero">
+      <div class="hero-glow"></div>
+      <p class="eyebrow">The Royal Wedding</p>
+      <h2 class="hero-title">Hizul & Tania</h2>
+      <p class="hero-date">03 . 07 . 2026</p>
+      <p class="hero-sub">"And of His signs is that He created for you from yourselves mates…" — QS. Ar-Rum: 21</p>
     </section>
 
-    <section class="section intro reveal" id="invitation">
-      <p class="eyebrow">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
-      <div class="ornament">✦</div>
-      <h2>Dengan memohon rahmat dan ridho Allah SWT</h2>
-      <p class="body-copy">Kami bermaksud menyelenggarakan pernikahan putra-putri kami. Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
+    <!-- SALAM -->
+    <section class="section salam">
+      <div class="ornament-frame">
+        <p class="salam-text">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
+        <p class="salam-sub">Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud menyelenggarakan pernikahan putra-putri kami.</p>
+      </div>
+    </section>
+
+    <!-- COUPLE -->
+    <section id="couple" class="section couple">
+      <h2 class="section-title">The Royal Couple</h2>
       <div class="couple-grid">
-        <article class="person-card glass tilt-card">
-          <div class="portrait"><img src="assets/hizul.jpg" alt="Foto Hizul" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';"></div>
-          <p class="eyebrow">The Groom</p><h3>Hizul</h3>
-          <p class="person-detail">Hizul [Nama Lengkap]</p>
-          <p class="person-detail">Putra dari Bapak [Nama Ayah]<br>& Ibu [Nama Ibu]</p>
-        </article>
-        <div class="couple-ampersand">&</div>
-        <article class="person-card glass tilt-card">
-          <div class="portrait"><img src="assets/tania.jpg" alt="Foto Tania" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';"></div>
-          <p class="eyebrow">The Bride</p><h3>Tania</h3>
-          <p class="person-detail">Tania [Nama Lengkap]</p>
-          <p class="person-detail">Putri dari Bapak [Nama Ayah]<br>& Ibu [Nama Ibu]</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section story-section reveal" id="journey">
-      <p class="eyebrow">Our Love Story</p>
-      <h2>The Journey <em>— Perjalanan Bersama</em></h2>
-      <div class="story-layout">
-        <div class="story-photo glass">
-          <img src="assets/story.jpg" alt="Foto kenangan Hizul dan Tania" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';">
-          <span class="image-caption">A story written by time</span>
+        <div class="couple-card reveal">
+          <div class="photo-frame photo-groom">
+            <img src="assets/img/groom.jpg" alt="Hizul Wahyudin" loading="lazy" />
+          </div>
+          <h3>Hizul Wahyudin</h3>
+          <p class="couple-sub">Putra dari Bapak [NAMA AYAH] &amp; Ibu [NAMA IBU]</p>
         </div>
-        <div class="story-text">
-          <div class="timeline-item"><span class="timeline-dot"></span><p class="timeline-label">THE BEGINNING</p><p>Hizul dan Tania dipertemukan di tempat kerja yang sama. Dari pertemuan sederhana, tumbuh rasa yang perlahan menjadi istimewa.</p></div>
-          <div class="timeline-item"><span class="timeline-dot"></span><p class="timeline-label">A LITTLE PATIENCE</p><p>Hizul lebih dahulu menyimpan rasa dan memilih menunggu, sambil berharap waktu membawa mereka pada cerita yang sama.</p></div>
-          <div class="timeline-item"><span class="timeline-dot"></span><p class="timeline-label">TOGETHER, AT LAST</p><p>Hari demi hari mengajarkan mereka arti saling memahami, menjaga, dan melangkah bersama menuju masa depan.</p></div>
+        <div class="couple-heart">&amp;</div>
+        <div class="couple-card reveal">
+          <div class="photo-frame photo-bride">
+            <img src="assets/img/bride.jpg" alt="Tania Renata" loading="lazy" />
+          </div>
+          <h3>Tania Renata</h3>
+          <p class="couple-sub">Putri dari Bapak [NAMA AYAH] &amp; Ibu [NAMA IBU]</p>
         </div>
       </div>
     </section>
 
-    <section class="section promise-section reveal" id="promise">
-      <div class="promise-card glass tilt-card">
-        <div class="ornament">✧</div>
-        <p class="eyebrow">A promise for a lifetime</p>
-        <h2>The Promise <em>— Janji Selamanya</em></h2>
-        <p class="promise-quote">“Bukan tentang menemukan seseorang yang sempurna, melainkan memilih untuk terus tumbuh bersama, saling menjaga, dan pulang pada hati yang sama.”</p>
-        <div class="gold-line"></div>
-        <p class="signature">Hizul <span>&</span> Tania</p>
+    <!-- AYAT -->
+    <section class="section ayat">
+      <div class="ayat-panel">
+        <h2 class="section-title">A Sacred Promise</h2>
+        <p class="arabic" dir="rtl" lang="ar">
+          وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِقَوْمٍ يَتَفَكَّرُونَ
+        </p>
+        <p class="translation">
+          "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+        </p>
+        <p class="source">— QS. Ar-Rum [30]: 21</p>
       </div>
     </section>
 
-    <section class="section event-section reveal" id="event">
-      <p class="eyebrow">Save the Date</p>
-      <h2>Hari Bahagia Kami</h2>
-      <p class="body-copy">Dengan penuh rasa syukur, kami mengundang Anda untuk hadir dan memberikan doa restu.</p>
-      <div class="countdown glass" aria-label="Hitung mundur menuju hari pernikahan">
-        <div><strong id="days">000</strong><span>Hari</span></div><i>:</i>
-        <div><strong id="hours">00</strong><span>Jam</span></div><i>:</i>
-        <div><strong id="minutes">00</strong><span>Menit</span></div><i>:</i>
-        <div><strong id="seconds">00</strong><span>Detik</span></div>
-      </div>
-      <div class="event-grid">
-        <article class="event-card glass">
-          <div class="event-symbol">✦</div><p class="eyebrow">Akad Nikah</p><h3 id="akadDate">Sabtu, 20 Desember 2026</h3>
-          <p id="akadTime">08.00 WIB — selesai</p><p class="event-place" id="akadPlace">[Nama Gedung / Lokasi Akad]<br>[Alamat lengkap]</p>
+    <!-- LOVE STORY -->
+    <section id="story" class="section story">
+      <h2 class="section-title">Our Love Story</h2>
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <div class="tl-marker"></div>
+          <h3>The Beginning — Awal Bertemu</h3>
+          <p>Berawal dari tempat kerja yang sama, Hizul dan Tania dipertemukan dalam sebuah cerita sederhana. Hizul jatuh hati lebih dulu, menyimpan rasa, dan memilih untuk tetap menunggu Tania. Baginya, cinta bukan tentang siapa yang datang lebih dulu, melainkan tentang kesungguhan untuk bertahan hingga waktu mempertemukan mereka pada jawaban yang tepat.</p>
         </article>
-        <article class="event-card glass">
-          <div class="event-symbol">✧</div><p class="eyebrow">Resepsi</p><h3 id="receptionDate">Sabtu, 20 Desember 2026</h3>
-          <p id="receptionTime">11.00–14.00 WIB</p><p class="event-place" id="receptionPlace">[Nama Gedung / Lokasi Resepsi]<br>[Alamat lengkap]</p>
+        <article class="timeline-item reveal">
+          <div class="tl-marker"></div>
+          <h3>The Journey — Perjalanan Bersama</h3>
+          <p>Dari pertemuan sederhana, tumbuh harapan untuk melangkah bersama.</p>
+        </article>
+        <article class="timeline-item reveal">
+          <div class="tl-marker"></div>
+          <h3>The Promise — Janji Selamanya</h3>
+          <p>Sebuah janji untuk saling menjaga, mencintai, dan memilih satu sama lain hingga selamanya. 🤍</p>
         </article>
       </div>
-      <a class="button button-outline" id="mapsButton" href="https://maps.google.com/" target="_blank" rel="noopener noreferrer">Buka Google Maps ↗</a>
-      <p class="small-note">Silakan ganti alamat dan tautan Maps di file <code>script.js</code>.</p>
     </section>
 
-    <section class="section gallery-section reveal" id="gallery">
-      <p class="eyebrow">Our Moments</p><h2>Captured in Love</h2>
-      <p class="body-copy">Setiap momen adalah bagian dari cerita yang kami syukuri.</p>
+    <!-- EVENT -->
+    <section id="event" class="section event">
+      <h2 class="section-title">The Royal Wedding Day</h2>
+      <div class="event-card">
+        <p class="event-label">Akad Nikah &amp; Resepsi</p>
+        <h3 class="event-day">Minggu, 03 Juli 2026</h3>
+        <p class="event-time">09:00 WIB</p>
+        <p class="event-place">Rumah Mempelai Wanita</p>
+        <p class="event-address">Karang Bahagia, Kec. Karang Bahagia</p>
+
+        <div id="countdown" class="countdown">
+          <div><span id="cd-days">--</span><small>Hari</small></div>
+          <div><span id="cd-hours">--</span><small>Jam</small></div>
+          <div><span id="cd-mins">--</span><small>Menit</small></div>
+          <div><span id="cd-secs">--</span><small>Detik</small></div>
+        </div>
+
+        <div class="event-actions">
+          <a id="btn-maps" class="btn-gold" href="#" target="_blank" rel="noopener">Lihat Lokasi</a>
+          <a id="btn-cal" class="btn-outline" href="#" download="hizul-tania.ics">Simpan ke Kalender</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section gallery">
+      <h2 class="section-title">Royal Gallery</h2>
       <div class="gallery-grid">
-        <figure class="gallery-item gallery-tall"><img src="assets/gallery-1.jpg" alt="Foto prewedding 1" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';"></figure>
-        <figure class="gallery-item"><img src="assets/gallery-2.jpg" alt="Foto prewedding 2" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';"></figure>
-        <figure class="gallery-item"><img src="assets/gallery-3.jpg" alt="Foto prewedding 3" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';"></figure>
+        <figure class="reveal"><img src="assets/img/gallery-1.jpg" alt="Foto 1" loading="lazy" /></figure>
+        <figure class="reveal"><img src="assets/img/gallery-2.jpg" alt="Foto 2" loading="lazy" /></figure>
+        <figure class="reveal"><img src="assets/img/gallery-3.jpg" alt="Foto 3" loading="lazy" /></figure>
+        <figure class="reveal"><img src="assets/img/gallery-4.jpg" alt="Foto 4" loading="lazy" /></figure>
       </div>
     </section>
 
-    <section class="section rsvp-section reveal" id="rsvp">
-      <div class="rsvp-card glass">
-        <p class="eyebrow">Kindly Respond</p><h2>Konfirmasi Kehadiran</h2>
-        <p class="body-copy">Kehadiran dan doa Anda merupakan kebahagiaan bagi kami.</p>
-        <form id="rsvpForm">
-          <label for="guestName">Nama</label><input id="guestName" name="name" required maxlength="100" placeholder="Nama Anda">
-          <label for="attendance">Konfirmasi kehadiran</label>
-          <select id="attendance" name="attendance" required><option value="">Pilih jawaban</option><option value="Hadir">Insyaallah hadir</option><option value="Tidak hadir">Mohon maaf, belum bisa hadir</option></select>
-          <label for="guestCount">Jumlah tamu</label><select id="guestCount" name="count"><option value="1">1 orang</option><option value="2">2 orang</option><option value="3">3 orang</option><option value="4">4 orang</option></select>
-          <label for="guestMessage">Ucapan & doa (opsional)</label><textarea id="guestMessage" name="message" rows="3" maxlength="500" placeholder="Tuliskan doa terbaik Anda..."></textarea>
-          <button class="button button-gold button-full" type="submit">Kirim Konfirmasi</button>
-          <p class="form-note" id="formNote">Catatan: tombol ini membuka WhatsApp. Ganti nomor tujuan pada file script.js.</p>
-        </form>
+    <!-- RSVP -->
+    <section id="rsvp" class="section rsvp">
+      <h2 class="section-title">RSVP</h2>
+      <form id="rsvp-form" class="rsvp-form">
+        <label>Nama
+          <input type="text" id="rsvp-name" required placeholder="Nama Anda" />
+        </label>
+        <label>Jumlah Tamu
+          <input type="number" id="rsvp-count" min="1" max="10" value="1" required />
+        </label>
+        <label>Status Kehadiran
+          <select id="rsvp-status" required>
+            <option value="InsyaAllah Hadir">InsyaAllah Hadir</option>
+            <option value="Mohon Maaf, Belum Bisa Hadir">Mohon Maaf, Belum Bisa Hadir</option>
+          </select>
+        </label>
+        <label>Pesan / Doa
+          <textarea id="rsvp-msg" rows="3" placeholder="Tulis doa untuk kedua mempelai…"></textarea>
+        </label>
+        <button type="submit" class="btn-gold">Kirim Konfirmasi via WhatsApp</button>
+      </form>
+    </section>
+
+    <!-- GIFT -->
+    <section id="gift" class="section gift">
+      <h2 class="section-title">Wedding Gift</h2>
+      <div class="gift-card">
+        <p class="gift-bank">Bank Mandiri</p>
+        <p class="gift-number" id="acc-number">1670004172192</p>
+        <p class="gift-owner">a.n. Hizul Wahyudin</p>
+        <button id="btn-copy" class="btn-gold">Salin Nomor Rekening</button>
+        <p id="copy-toast" class="toast hidden">Nomor rekening tersalin ✓</p>
       </div>
     </section>
 
-    <section class="section closing-section reveal">
-      <div class="closing-ornament">❦</div>
-      <p class="eyebrow">Your presence is our present</p>
-      <h2>Merupakan suatu kehormatan bagi kami</h2>
-      <p class="body-copy">Atas kehadiran dan doa restunya, kami ucapkan terima kasih.</p>
-      <p class="closing-greeting">Wassalamu’alaikum Warahmatullahi Wabarakatuh</p>
-      <p class="signature">Hizul <span>&</span> Tania</p>
+    <!-- CLOSING -->
+    <section class="section closing">
+      <div class="closing-glow"></div>
+      <h2 class="closing-title">Happily Ever After</h2>
+      <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu kepada kedua mempelai.</p>
+      <p>Terima kasih atas doa dan kasih sayang yang diberikan.</p>
+      <p class="closing-names">Hizul Wahyudin &amp; Tania Renata</p>
+      <p class="closing-doa">"May Allah bless our union with love, sakinah, mawaddah, and rahmah."</p>
     </section>
+
+    <footer class="footer">
+      <p>© 2026 Hizul &amp; Tania — Made with love 🤍</p>
+    </footer>
   </main>
 
-  <footer><span>MADE WITH LOVE</span><span>HIZUL & TANIA · <span id="footerYear">2026</span></span></footer>
-  <script src="script.js"></script>
+  <!-- MUSIC CONTROL -->
+  <button id="music-toggle" class="music-toggle hidden" aria-label="Kontrol Musik">
+    <span id="music-icon">🎵</span>
+  </button>
+  <audio id="bg-music" loop preload="none">
+    <source src="assets/audio/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox hidden">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Tutup">✕</button>
+    <img id="lightbox-img" src="" alt="Preview" />
+  </div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
