@@ -1,172 +1,191 @@
-/* Sampul pintu: buka dua panel, lalu aktifkan undangan */
-const doorIntro = document.getElementById("doorIntro");
-const openInvitationButton = document.getElementById("openInvitation");
-openInvitationButton.addEventListener("click", async () => {
-  if (doorIntro.classList.contains("opening")) return;
-  doorIntro.classList.add("opening");
-  document.body.classList.remove("invitation-locked");
-  // Musik dicoba setelah klik pengguna; bila file belum tersedia, undangan tetap terbuka.
-  const introMusic = document.getElementById("weddingMusic");
-  if (introMusic && introMusic.paused) {
-    try {
-      await introMusic.play();
-      document.getElementById("musicToggle")?.classList.add("playing");
-      const label = document.getElementById("musicLabel");
-      if (label) label.textContent = "Jeda";
-    } catch (_) { /* musik opsional */ }
+/* ==================== GUEST NAME ==================== */
+(function () {
+  const p = new URLSearchParams(location.search);
+  const to = p.get('to');
+  const el = document.getElementById('guest-name');
+  el.textContent = to && to.trim() ? to.trim() : 'Tamu Undangan';
+})();
+
+/* ==================== STARFIELD ==================== */
+(function () {
+  const c = document.getElementById('stars-canvas');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  let stars = [], w, h;
+  function resize() {
+    w = c.width = innerWidth;
+    h = c.height = innerHeight;
+    stars = Array.from({ length: 90 }, () => ({
+      x: Math.random() * w, y: Math.random() * h,
+      r: Math.random() * 1.6 + 0.3, a: Math.random(),
+      speed: Math.random() * 0.02 + 0.005
+    }));
   }
-  window.setTimeout(() => {
-    doorIntro.classList.add("closed");
-    doorIntro.setAttribute("aria-hidden", "true");
-  }, 1450);
-});
-
-/* GANTI DATA ACARA DI BAGIAN KONFIGURASI INI */
-const WEDDING = {
-  // Format tanggal lokal: YYYY-MM-DDTHH:mm:ss+07:00
-  date: "2026-12-20T08:00:00+07:00",
-  dateLabel: "Minggu, 20 Desember 2026",
-  akad: {
-    date: "Minggu, 20 Desember 2026",
-    time: "08.00 WIB — selesai",
-    place: "[Nama Gedung / Lokasi Akad]",
-    address: "[Alamat lengkap]"
-  },
-  reception: {
-    date: "Minggu, 20 Desember 2026",
-    time: "11.00–14.00 WIB",
-    place: "[Nama Gedung / Lokasi Resepsi]",
-    address: "[Alamat lengkap]"
-  },
-  // Tempel URL Google Maps lokasi acara, misalnya https://maps.app.goo.gl/...
-  mapsUrl: "https://maps.google.com/",
-  // Isi nomor WhatsApp dengan kode negara tanpa + atau spasi, contoh 6281234567890
-  whatsappNumber: "6281234567890"
-};
-
-/* Tampilkan detail acara dari konfigurasi */
-document.querySelectorAll("[data-event-date]").forEach(el => el.textContent = WEDDING.dateLabel);
-document.getElementById("akadDate").textContent = WEDDING.akad.date;
-document.getElementById("akadTime").textContent = WEDDING.akad.time;
-document.getElementById("akadPlace").innerHTML = `${escapeHtml(WEDDING.akad.place)}<br>${escapeHtml(WEDDING.akad.address)}`;
-document.getElementById("receptionDate").textContent = WEDDING.reception.date;
-document.getElementById("receptionTime").textContent = WEDDING.reception.time;
-document.getElementById("receptionPlace").innerHTML = `${escapeHtml(WEDDING.reception.place)}<br>${escapeHtml(WEDDING.reception.address)}`;
-document.getElementById("mapsButton").href = WEDDING.mapsUrl;
-document.getElementById("footerYear").textContent = new Date().getFullYear();
-
-function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-  })[char]);
-}
-
-/* Countdown */
-const targetDate = new Date(WEDDING.date).getTime();
-const pad = value => String(value).padStart(2, "0");
-function updateCountdown() {
-  let distance = targetDate - Date.now();
-  if (!Number.isFinite(targetDate) || distance <= 0) {
-    ["days","hours","minutes","seconds"].forEach(id => document.getElementById(id).textContent = "00");
-    return;
-  }
-  const days = Math.floor(distance / 86400000);
-  distance %= 86400000;
-  const hours = Math.floor(distance / 3600000);
-  distance %= 3600000;
-  const minutes = Math.floor(distance / 60000);
-  const seconds = Math.floor((distance % 60000) / 1000);
-  document.getElementById("days").textContent = String(days).padStart(3, "0");
-  document.getElementById("hours").textContent = pad(hours);
-  document.getElementById("minutes").textContent = pad(minutes);
-  document.getElementById("seconds").textContent = pad(seconds);
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-/* Scroll reveal */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
-
-/* Efek tilt 3D pada perangkat yang memiliki pointer */
-const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-if (finePointer && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  document.querySelectorAll(".tilt-card").forEach(card => {
-    card.addEventListener("pointermove", event => {
-      const rect = card.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `perspective(1000px) rotateX(${-y * 4}deg) rotateY(${x * 5}deg) translateY(-2px)`;
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+    stars.forEach(s => {
+      s.a += s.speed;
+      const al = 0.4 + Math.sin(s.a) * 0.4;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,235,180,' + al + ')';
+      ctx.fill();
     });
-    card.addEventListener("pointerleave", () => card.style.transform = "");
-  });
-}
+    requestAnimationFrame(animate);
+  }
+  addEventListener('resize', resize);
+  resize();
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) animate();
+})();
 
-/* Partikel cahaya dekoratif */
-const sparkleRoot = document.getElementById("sparkles");
-for (let i = 0; i < 42; i++) {
-  const particle = document.createElement("span");
-  particle.className = "sparkle";
-  particle.style.left = `${Math.random() * 100}%`;
-  particle.style.top = `${Math.random() * 100}%`;
-  particle.style.setProperty("--duration", `${3 + Math.random() * 5}s`);
-  particle.style.animationDelay = `${Math.random() * 6}s`;
-  sparkleRoot.appendChild(particle);
-}
+/* ==================== OPEN INVITATION ==================== */
+const opening = document.getElementById('opening');
+const mainContent = document.getElementById('main-content');
+const musicToggle = document.getElementById('music-toggle');
+const bgMusic = document.getElementById('bg-music');
+const musicIcon = document.getElementById('music-icon');
 
-/* Musik: browser mewajibkan interaksi pengguna sebelum audio diputar */
-const music = document.getElementById("weddingMusic");
-const musicToggle = document.getElementById("musicToggle");
-const musicLabel = document.getElementById("musicLabel");
-musicToggle.addEventListener("click", async () => {
-  if (music.paused) {
-    try {
-      await music.play();
-      musicToggle.classList.add("playing");
-      musicLabel.textContent = "Jeda";
-    } catch {
-      musicLabel.textContent = "Tambah music.mp3";
-      document.getElementById("formNote").textContent = "Musik belum tersedia. Tambahkan file assets/music.mp3 milik Anda.";
-    }
+document.getElementById('btn-open').addEventListener('click', () => {
+  opening.classList.add('fade-out');
+  mainContent.classList.remove('hidden');
+  musicToggle.classList.remove('hidden');
+  bgMusic.volume = 0.6;
+  const pr = bgMusic.play();
+  if (pr !== undefined) {
+    pr.then(() => {
+      musicIcon.textContent = '🎵';
+      musicToggle.classList.remove('paused');
+    }).catch(() => {
+      musicIcon.textContent = '🔇';
+      musicToggle.classList.add('paused');
+      musicToggle.disabled = true;
+      musicToggle.title = 'Musik tidak tersedia';
+    });
+  }
+  scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ==================== MUSIC TOGGLE ==================== */
+musicToggle.addEventListener('click', () => {
+  if (bgMusic.paused) {
+    bgMusic.play().then(() => {
+      musicIcon.textContent = '🎵';
+      musicToggle.classList.remove('paused');
+    }).catch(() => {});
   } else {
-    music.pause();
-    musicToggle.classList.remove("playing");
-    musicLabel.textContent = "Musik";
+    bgMusic.pause();
+    musicIcon.textContent = '🔇';
+    musicToggle.classList.add('paused');
   }
 });
 
-/* RSVP dikirim melalui WhatsApp, tanpa database eksternal */
-document.getElementById("rsvpForm").addEventListener("submit", event => {
-  event.preventDefault();
-  const form = new FormData(event.currentTarget);
-  const name = String(form.get("name") || "").trim();
-  const attendance = String(form.get("attendance") || "");
-  const count = String(form.get("count") || "1");
-  const message = String(form.get("message") || "").trim();
-  const text = [
-    "Assalamu'alaikum, konfirmasi undangan pernikahan Hizul & Tania.",
-    `Nama: ${name}`,
-    `Kehadiran: ${attendance}`,
-    `Jumlah tamu: ${count} orang`,
-    message ? `Ucapan & doa: ${message}` : ""
-  ].filter(Boolean).join("\n");
-  const phone = WEDDING.whatsappNumber.replace(/\D/g, "");
-  if (!phone || phone === "6281234567890") {
-    const note = document.getElementById("formNote");
-    note.textContent = "Sebelum digunakan, ganti whatsappNumber di script.js dengan nomor WhatsApp penerima yang benar. Pesan konfirmasi Anda: " + text;
-    return;
+/* ==================== REVEAL ==================== */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => io.observe(el));
+
+/* ==================== COUNTDOWN ==================== */
+(function () {
+  const target = new Date('2026-07-03T09:00:00+07:00').getTime();
+  const dEl = document.getElementById('cd-days');
+  const hEl = document.getElementById('cd-hours');
+  const mEl = document.getElementById('cd-mins');
+  const sEl = document.getElementById('cd-secs');
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = '00';
+      return;
+    }
+    dEl.textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
+    hEl.textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+    mEl.textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+    sEl.textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
   }
-  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+  tick();
+  setInterval(tick, 1000);
+})();
+
+/* ==================== MAPS ==================== */
+(function () {
+  const addr = 'Karang Bahagia, Kec. Karang Bahagia';
+  document.getElementById('btn-maps').href =
+    'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(addr);
+})();
+
+/* ==================== CALENDAR (.ics) ==================== */
+(function () {
+  const ics = [
+    'BEGIN:VCALENDAR','VERSION:2.0',
+    'PRODID:-//Hizul & Tania//Wedding//ID',
+    'BEGIN:VEVENT','UID:' + Date.now() + '@hizul-tania',
+    'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
+    'DTSTART:20260703T020000Z','DTEND:20260703T060000Z',
+    'SUMMARY:Pernikahan Hizul & Tania',
+    'DESCRIPTION:Akad Nikah & Resepsi Pernikahan',
+    'LOCATION:Karang Bahagia\\, Kec. Karang Bahagia',
+    'END:VEVENT','END:VCALENDAR'
+  ].join('\r\n');
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  document.getElementById('btn-cal').href = URL.createObjectURL(blob);
+})();
+
+/* ==================== LIGHTBOX ==================== */
+(function () {
+  const box = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  const cl = document.getElementById('lightbox-close');
+  document.querySelectorAll('.gallery-grid figure img').forEach(el => {
+    el.addEventListener('click', () => {
+      img.src = el.src;
+      img.alt = el.alt;
+      box.classList.remove('hidden');
+    });
+  });
+  function hide() { box.classList.add('hidden'); img.src = ''; }
+  cl.addEventListener('click', hide);
+  box.addEventListener('click', e => { if (e.target === box) hide(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') hide(); });
+})();
+
+/* ==================== RSVP -> WHATSAPP ==================== */
+document.getElementById('rsvp-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('rsvp-name').value.trim();
+  const count = document.getElementById('rsvp-count').value;
+  const status = document.getElementById('rsvp-status').value;
+  const msg = document.getElementById('rsvp-msg').value.trim();
+  const phone = '6283861747832';
+  const text =
+    'Halo, saya *' + name + '*%0A' +
+    'Konfirmasi kehadiran: *' + status + '*%0A' +
+    'Jumlah tamu: *' + count + '*%0A' +
+    (msg ? 'Pesan: ' + msg + '%0A' : '') +
+    '%0A— Undangan Hizul & Tania';
+  window.open('https://wa.me/' + phone + '?text=' + text, '_blank');
 });
 
-/* Menghormati preferensi motion dan menampilkan reveal jika observer tidak tersedia */
-if (!("IntersectionObserver" in window)) {
-  document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
-}
+/* ==================== COPY ACCOUNT ==================== */
+document.getElementById('btn-copy').addEventListener('click', async () => {
+  const n = document.getElementById('acc-number').textContent.trim();
+  const t = document.getElementById('copy-toast');
+  try {
+    await navigator.clipboard.writeText(n);
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = n;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  }
+  t.classList.remove('hidden');
+  setTimeout(() => t.classList.add('hidden'), 2500);
+});
