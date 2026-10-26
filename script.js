@@ -1,3 +1,26 @@
+/* Sampul pintu: buka dua panel, lalu aktifkan undangan */
+const doorIntro = document.getElementById("doorIntro");
+const openInvitationButton = document.getElementById("openInvitation");
+openInvitationButton.addEventListener("click", async () => {
+  if (doorIntro.classList.contains("opening")) return;
+  doorIntro.classList.add("opening");
+  document.body.classList.remove("invitation-locked");
+  // Musik dicoba setelah klik pengguna; bila file belum tersedia, undangan tetap terbuka.
+  const introMusic = document.getElementById("weddingMusic");
+  if (introMusic && introMusic.paused) {
+    try {
+      await introMusic.play();
+      document.getElementById("musicToggle")?.classList.add("playing");
+      const label = document.getElementById("musicLabel");
+      if (label) label.textContent = "Jeda";
+    } catch (_) { /* musik opsional */ }
+  }
+  window.setTimeout(() => {
+    doorIntro.classList.add("closed");
+    doorIntro.setAttribute("aria-hidden", "true");
+  }, 1450);
+});
+
 /* GANTI DATA ACARA DI BAGIAN KONFIGURASI INI */
 const WEDDING = {
   // Format tanggal lokal: YYYY-MM-DDTHH:mm:ss+07:00

@@ -6,9 +6,11 @@ Website undangan statis yang dapat di-host gratis dengan GitHub Pages.
 - `index.html` — struktur halaman undangan
 - `style.css` — desain responsif, animasi, efek 3D, serta bingkai botani bergerak
 - `script.js` — konfigurasi acara, countdown, efek 3D, musik, RSVP WhatsApp
-- `assets/` — tempat foto dan musik
+- `assets/` — tempat foto, musik, dan gambar sampul pintu (`gate-cover.png`)
 
 ## Efek visual tambahan
+- Sampul pembuka bergambar gerbang mewah; tombol **Buka Undangan** membuka kedua daun pintu ke arah samping dengan animasi sinematik.
+- Bingkai emas dan cahaya lembut pada sampul pembuka, lalu halaman undangan tampil di belakangnya.
 - Bingkai tanaman/sulur pohon di kiri dan kanan halaman.
 - Bunga emas bergerak, dua burung animasi, dan kunang-kunang bercahaya.
 - Animasi responsif dan menghormati preferensi pengurangan gerakan perangkat.

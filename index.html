@@ -11,7 +11,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="invitation-locked">
+
+  <!-- Sampul pembuka: dua daun pintu bergerak membuka saat tombol ditekan -->
+  <div class="door-intro" id="doorIntro" role="dialog" aria-label="Sampul undangan pernikahan Hizul dan Tania">
+    <div class="door-atmosphere" aria-hidden="true"></div>
+    <div class="door-panel door-panel-left" aria-hidden="true"></div>
+    <div class="door-panel door-panel-right" aria-hidden="true"></div>
+    <div class="door-frame-glow" aria-hidden="true"></div>
+    <div class="door-cover-copy">
+      <p class="door-kicker">THE WEDDING OF</p>
+      <h1>Hizul <span>&amp;</span> Tania</h1>
+      <p class="door-tagline">Satu Hati · Satu Jalan · Selamanya</p>
+      <button class="door-open-button" id="openInvitation" type="button"><span class="door-icon" aria-hidden="true">♧</span> Buka Undangan <span class="door-arrow" aria-hidden="true">↗</span></button>
+      <p class="door-hint">Sebuah kisah indah menanti untuk dibuka</p>
+    </div>
+    <div class="door-bottom-ornament" aria-hidden="true">✧ &nbsp; ✦ &nbsp; ✧</div>
+  </div>
 
   <!-- Bingkai botani 3D bergerak di kedua sisi -->
   <div class="side-frame left" aria-hidden="true">
@@ -76,7 +92,7 @@
           <img class="hero-photo" src="assets/prewedding.jpg" alt="Foto prewedding Hizul dan Tania" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';">
           <div class="photo-shine"></div>
         </div>
-        <a class="button button-gold" href="#invitation">Buka Undangan <span>↓</span></a>
+        <a class="button button-gold" href="#invitation">Lihat Undangan <span>↓</span></a>
         <p class="small-note">Kepada Yth. Bapak/Ibu/Saudara/i</p>
       </div>
       <div class="scroll-hint"><span></span> SCROLL TO EXPLORE</div>
