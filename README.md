@@ -1,49 +1,61 @@
-# Undangan Pernikahan Hizul & Tania — Gold Luxury 3D
+# Undangan Digital Hizul & Tania
 
-Website undangan statis yang dapat di-host gratis dengan GitHub Pages.
+Website undangan statis (HTML, CSS, JS) bertema royal blue dan emas: pintu istana 3D, cahaya bercahaya, frame bunga dan pohon, serta burung terbang. Tanpa build tool, cukup upload ke GitHub Pages.
 
-## Isi folder
-- `index.html` — struktur halaman undangan
-- `style.css` — desain responsif, animasi, efek 3D, serta bingkai botani bergerak
-- `script.js` — konfigurasi acara, countdown, efek 3D, musik, RSVP WhatsApp
-- `assets/` — tempat foto, musik, dan gambar sampul pintu (`gate-cover.png`)
+## Struktur
 
-## Efek visual tambahan
-- Sampul pembuka bergambar gerbang mewah; tombol **Buka Undangan** membuka kedua daun pintu ke arah samping dengan animasi sinematik.
-- Bingkai emas dan cahaya lembut pada sampul pembuka, lalu halaman undangan tampil di belakangnya.
-- Bingkai tanaman/sulur pohon di kiri dan kanan halaman.
-- Bunga emas bergerak, dua burung animasi, dan kunang-kunang bercahaya.
-- Animasi responsif dan menghormati preferensi pengurangan gerakan perangkat.
+```
+index.html          halaman utama
+css/style.css       tampilan dan animasi
+js/config.js        SEMUA isi yang perlu Anda edit
+js/main.js          logika (tidak perlu diubah)
+assets/img/         foto
+assets/audio/       musik
+```
 
-## Cara mengedit sebelum dipublikasikan
-1. Buka `script.js`.
-2. Ubah `WEDDING.date` ke tanggal dan jam akad yang sebenarnya dengan format `YYYY-MM-DDTHH:mm:ss+07:00`.
-3. Ubah `dateLabel`, data `akad`, `reception`, `mapsUrl`, dan `whatsappNumber`.
-4. Di `index.html`, sesuaikan nama lengkap pasangan, nama orang tua, serta teks cerita bila diperlukan.
-5. Ganti gambar placeholder di folder `assets/` dengan foto Anda. Gunakan nama file yang sama:
-   - `prewedding.jpg`
-   - `hizul.jpg`
-   - `tania.jpg`
-   - `story.jpg`
-   - `gallery-1.jpg`
-   - `gallery-2.jpg`
-   - `gallery-3.jpg`
-6. Untuk musik, tambahkan file musik yang Anda punya hak untuk menggunakannya dengan nama `music.mp3` ke folder `assets/`. Tombol musik perlu ditekan oleh pengunjung sebelum musik mulai, karena kebijakan browser.
-7. Buka `index.html` secara lokal untuk memeriksa tampilan sebelum publikasi.
+## 1. Isi data di `js/config.js`
 
-## Publikasi gratis dengan GitHub Pages
-1. Masuk ke https://github.com dan buat akun jika belum punya.
-2. Klik **New repository**. Nama yang disarankan: `undangan-hizul-tania`. Pilih **Public**.
-3. Unggah seluruh isi folder ini ke root repository. Pastikan `index.html` berada di root, bukan di dalam folder tambahan.
-4. Buka **Settings → Pages**.
-5. Pada **Build and deployment**, pilih **Deploy from a branch**.
-6. Pilih branch `main`, folder `/(root)`, lalu klik **Save**.
-7. Tunggu proses publikasi selesai. URL biasanya berbentuk `https://USERNAME.github.io/undangan-hizul-tania/`.
+- Nama orang tua: isi `father` dan `mother`. Jika kosong, barisnya otomatis disembunyikan.
+- Tanggal acara: ubah `event.start` (format `2026-07-03T09:00:00+07:00`). Nama hari dihitung otomatis dari tanggal ini.
+- Bagian yang dikosongkan (rekening, galeri, cerita) otomatis disembunyikan.
 
-## Catatan
-- GitHub Pages cocok untuk situs statis dan tidak menjalankan server/database.
-- Form RSVP pada template ini membuka WhatsApp dengan pesan yang sudah terisi; pengunjung harus menekan tombol kirim di WhatsApp.
-- Untuk menyimpan ucapan secara otomatis di website, diperlukan layanan database/backend tambahan.
-- Foto harus dioptimalkan agar halaman cepat dibuka di ponsel. Gunakan JPG/WebP dengan ukuran yang wajar.
-- Ganti seluruh teks dalam tanda kurung siku `[ ... ]` sebelum undangan dibagikan.
-- Pastikan tanggal, jam, alamat, link Maps, dan nomor WhatsApp sudah benar.
+## 2. Tambahkan foto asli
+
+Letakkan di `assets/img/` dengan nama persis seperti ini (atau ubah nama di `config.js`):
+
+| File | Fungsi |
+|---|---|
+| `hizul.jpg` | foto mempelai pria (rasio portrait 3:4) |
+| `tania.jpg` | foto mempelai wanita (portrait 3:4) |
+| `berdua.jpg` | foto bersama (opsional) |
+| `galeri-1.jpg` … `galeri-6.jpg` | galeri |
+| `cover.jpg` | pratinjau saat link dibagikan di WhatsApp |
+
+Kompres foto dulu (lebar maksimal 1600 px, ukuran sekitar 300 KB per foto) lewat squoosh.app agar website cepat dibuka.
+
+## 3. Tambahkan musik
+
+Taruh file di `assets/audio/musik.mp3`. Musik baru diputar setelah tamu menekan "Buka Undangan". Pastikan Anda punya izin pakai lagu tersebut jika undangan dipublikasikan. Jika file tidak ada, tombol musik otomatis nonaktif dan website tetap berfungsi.
+
+## 4. Upload ke GitHub dan aktifkan GitHub Pages
+
+1. Buat repository baru di github.com (mis. `undangan-hizul-tania`), set Public.
+2. Klik **Add file > Upload files**, seret SEMUA isi folder ini (termasuk folder `css`, `js`, `assets`, dan file `.nojekyll`), lalu **Commit changes**.
+3. Buka **Settings > Pages**. Pada *Build and deployment*, pilih Source: **Deploy from a branch**, Branch: **main**, folder **/ (root)**, lalu **Save**.
+4. Tunggu 1 sampai 3 menit. Link Anda: `https://USERNAME.github.io/undangan-hizul-tania/`
+
+Setelah link jadi, ubah `og:image` di `index.html` menjadi URL penuh, misalnya `https://USERNAME.github.io/undangan-hizul-tania/assets/img/cover.jpg`, supaya gambar muncul saat dibagikan ke WhatsApp.
+
+## 5. Link untuk setiap tamu
+
+Tambahkan `?to=` dan nama tamu di belakang link:
+
+```
+https://USERNAME.github.io/undangan-hizul-tania/?to=Bapak%20Budi%20dan%20Keluarga
+```
+
+Spasi ditulis `%20`. Tanpa `?to=`, tampil "Tamu Undangan".
+
+## Catatan RSVP
+
+RSVP memakai WhatsApp: tamu mengisi form, memeriksa pesan otomatis, lalu mengirimnya ke nomor di `config.js`. Website ini TIDAK menyimpan data di database. Rekap kehadiran ada di chat WhatsApp Anda. Jika ingin daftar tamu tersimpan otomatis, perlu ditambah layanan formulir (mis. Google Forms atau Formspree).
