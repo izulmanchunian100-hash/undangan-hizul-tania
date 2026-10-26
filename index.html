@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10100e">
+  <meta name="description" content="Undangan pernikahan Hizul & Tania. Dengan penuh rasa syukur, kami mengundang Anda untuk merayakan hari bahagia kami.">
+  <title>Hizul & Tania — The Wedding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <span class="orb orb-one"></span><span class="orb orb-two"></span>
+    <div class="sparkles" id="sparkles"></div>
+  </div>
+
+  <button class="music-toggle" id="musicToggle" aria-label="Putar atau jeda musik" title="Musik latar">
+    <span class="music-icon">♫</span><span id="musicLabel">Musik</span>
+  </button>
+  <!-- Opsional: tambahkan file musik legal milik sendiri ke assets/music.mp3 -->
+  <audio id="weddingMusic" loop preload="none">
+    <source src="assets/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="hero-frame glass tilt-card">
+        <div class="top-label"><span></span> THE WEDDING OF <span></span></div>
+        <p class="eyebrow">Together with our families</p>
+        <h1 class="names"><span>Hizul</span><i>&</i><span>Tania</span></h1>
+        <div class="gold-line"></div>
+        <p class="hero-date" data-event-date>Sabtu, 20 Desember 2026</p>
+        <p class="hero-location">Dengan penuh cinta, kami mengundang Anda<br>untuk menjadi bagian dari hari istimewa kami.</p>
+        <div class="hero-photo-wrap">
+          <img class="hero-photo" src="assets/prewedding.jpg" alt="Foto prewedding Hizul dan Tania" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';">
+          <div class="photo-shine"></div>
+        </div>
+        <a class="button button-gold" href="#invitation">Buka Undangan <span>↓</span></a>
+        <p class="small-note">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+      </div>
+      <div class="scroll-hint"><span></span> SCROLL TO EXPLORE</div>
+    </section>
+
+    <section class="section intro reveal" id="invitation">
+      <p class="eyebrow">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
+      <div class="ornament">✦</div>
+      <h2>Dengan memohon rahmat dan ridho Allah SWT</h2>
+      <p class="body-copy">Kami bermaksud menyelenggarakan pernikahan putra-putri kami. Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
+      <div class="couple-grid">
+        <article class="person-card glass tilt-card">
+          <div class="portrait"><img src="assets/hizul.jpg" alt="Foto Hizul" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';"></div>
+          <p class="eyebrow">The Groom</p><h3>Hizul</h3>
+          <p class="person-detail">Hizul [Nama Lengkap]</p>
+          <p class="person-detail">Putra dari Bapak [Nama Ayah]<br>& Ibu [Nama Ibu]</p>
+        </article>
+        <div class="couple-ampersand">&</div>
+        <article class="person-card glass tilt-card">
+          <div class="portrait"><img src="assets/tania.jpg" alt="Foto Tania" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';"></div>
+          <p class="eyebrow">The Bride</p><h3>Tania</h3>
+          <p class="person-detail">Tania [Nama Lengkap]</p>
+          <p class="person-detail">Putri dari Bapak [Nama Ayah]<br>& Ibu [Nama Ibu]</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section story-section reveal" id="journey">
+      <p class="eyebrow">Our Love Story</p>
+      <h2>The Journey <em>— Perjalanan Bersama</em></h2>
+      <div class="story-layout">
+        <div class="story-photo glass">
+          <img src="assets/story.jpg" alt="Foto kenangan Hizul dan Tania" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';">
+          <span class="image-caption">A story written by time</span>
+        </div>
+        <div class="story-text">
+          <div class="timeline-item"><span class="timeline-dot"></span><p class="timeline-label">THE BEGINNING</p><p>Hizul dan Tania dipertemukan di tempat kerja yang sama. Dari pertemuan sederhana, tumbuh rasa yang perlahan menjadi istimewa.</p></div>
+          <div class="timeline-item"><span class="timeline-dot"></span><p class="timeline-label">A LITTLE PATIENCE</p><p>Hizul lebih dahulu menyimpan rasa dan memilih menunggu, sambil berharap waktu membawa mereka pada cerita yang sama.</p></div>
+          <div class="timeline-item"><span class="timeline-dot"></span><p class="timeline-label">TOGETHER, AT LAST</p><p>Hari demi hari mengajarkan mereka arti saling memahami, menjaga, dan melangkah bersama menuju masa depan.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section promise-section reveal" id="promise">
+      <div class="promise-card glass tilt-card">
+        <div class="ornament">✧</div>
+        <p class="eyebrow">A promise for a lifetime</p>
+        <h2>The Promise <em>— Janji Selamanya</em></h2>
+        <p class="promise-quote">“Bukan tentang menemukan seseorang yang sempurna, melainkan memilih untuk terus tumbuh bersama, saling menjaga, dan pulang pada hati yang sama.”</p>
+        <div class="gold-line"></div>
+        <p class="signature">Hizul <span>&</span> Tania</p>
+      </div>
+    </section>
+
+    <section class="section event-section reveal" id="event">
+      <p class="eyebrow">Save the Date</p>
+      <h2>Hari Bahagia Kami</h2>
+      <p class="body-copy">Dengan penuh rasa syukur, kami mengundang Anda untuk hadir dan memberikan doa restu.</p>
+      <div class="countdown glass" aria-label="Hitung mundur menuju hari pernikahan">
+        <div><strong id="days">000</strong><span>Hari</span></div><i>:</i>
+        <div><strong id="hours">00</strong><span>Jam</span></div><i>:</i>
+        <div><strong id="minutes">00</strong><span>Menit</span></div><i>:</i>
+        <div><strong id="seconds">00</strong><span>Detik</span></div>
+      </div>
+      <div class="event-grid">
+        <article class="event-card glass">
+          <div class="event-symbol">✦</div><p class="eyebrow">Akad Nikah</p><h3 id="akadDate">Sabtu, 20 Desember 2026</h3>
+          <p id="akadTime">08.00 WIB — selesai</p><p class="event-place" id="akadPlace">[Nama Gedung / Lokasi Akad]<br>[Alamat lengkap]</p>
+        </article>
+        <article class="event-card glass">
+          <div class="event-symbol">✧</div><p class="eyebrow">Resepsi</p><h3 id="receptionDate">Sabtu, 20 Desember 2026</h3>
+          <p id="receptionTime">11.00–14.00 WIB</p><p class="event-place" id="receptionPlace">[Nama Gedung / Lokasi Resepsi]<br>[Alamat lengkap]</p>
+        </article>
+      </div>
+      <a class="button button-outline" id="mapsButton" href="https://maps.google.com/" target="_blank" rel="noopener noreferrer">Buka Google Maps ↗</a>
+      <p class="small-note">Silakan ganti alamat dan tautan Maps di file <code>script.js</code>.</p>
+    </section>
+
+    <section class="section gallery-section reveal" id="gallery">
+      <p class="eyebrow">Our Moments</p><h2>Captured in Love</h2>
+      <p class="body-copy">Setiap momen adalah bagian dari cerita yang kami syukuri.</p>
+      <div class="gallery-grid">
+        <figure class="gallery-item gallery-tall"><img src="assets/gallery-1.jpg" alt="Foto prewedding 1" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';"></figure>
+        <figure class="gallery-item"><img src="assets/gallery-2.jpg" alt="Foto prewedding 2" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';"></figure>
+        <figure class="gallery-item"><img src="assets/gallery-3.jpg" alt="Foto prewedding 3" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';"></figure>
+      </div>
+    </section>
+
+    <section class="section rsvp-section reveal" id="rsvp">
+      <div class="rsvp-card glass">
+        <p class="eyebrow">Kindly Respond</p><h2>Konfirmasi Kehadiran</h2>
+        <p class="body-copy">Kehadiran dan doa Anda merupakan kebahagiaan bagi kami.</p>
+        <form id="rsvpForm">
+          <label for="guestName">Nama</label><input id="guestName" name="name" required maxlength="100" placeholder="Nama Anda">
+          <label for="attendance">Konfirmasi kehadiran</label>
+          <select id="attendance" name="attendance" required><option value="">Pilih jawaban</option><option value="Hadir">Insyaallah hadir</option><option value="Tidak hadir">Mohon maaf, belum bisa hadir</option></select>
+          <label for="guestCount">Jumlah tamu</label><select id="guestCount" name="count"><option value="1">1 orang</option><option value="2">2 orang</option><option value="3">3 orang</option><option value="4">4 orang</option></select>
+          <label for="guestMessage">Ucapan & doa (opsional)</label><textarea id="guestMessage" name="message" rows="3" maxlength="500" placeholder="Tuliskan doa terbaik Anda..."></textarea>
+          <button class="button button-gold button-full" type="submit">Kirim Konfirmasi</button>
+          <p class="form-note" id="formNote">Catatan: tombol ini membuka WhatsApp. Ganti nomor tujuan pada file script.js.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section closing-section reveal">
+      <div class="closing-ornament">❦</div>
+      <p class="eyebrow">Your presence is our present</p>
+      <h2>Merupakan suatu kehormatan bagi kami</h2>
+      <p class="body-copy">Atas kehadiran dan doa restunya, kami ucapkan terima kasih.</p>
+      <p class="closing-greeting">Wassalamu’alaikum Warahmatullahi Wabarakatuh</p>
+      <p class="signature">Hizul <span>&</span> Tania</p>
+    </section>
+  </main>
+
+  <footer><span>MADE WITH LOVE</span><span>HIZUL & TANIA · <span id="footerYear">2026</span></span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
