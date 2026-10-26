@@ -4,9 +4,14 @@ Website undangan statis yang dapat di-host gratis dengan GitHub Pages.
 
 ## Isi folder
 - `index.html` — struktur halaman undangan
-- `style.css` — desain responsif, animasi, dan efek visual
+- `style.css` — desain responsif, animasi, efek 3D, serta bingkai botani bergerak
 - `script.js` — konfigurasi acara, countdown, efek 3D, musik, RSVP WhatsApp
 - `assets/` — tempat foto dan musik
+
+## Efek visual tambahan
+- Bingkai tanaman/sulur pohon di kiri dan kanan halaman.
+- Bunga emas bergerak, dua burung animasi, dan kunang-kunang bercahaya.
+- Animasi responsif dan menghormati preferensi pengurangan gerakan perangkat.
 
 ## Cara mengedit sebelum dipublikasikan
 1. Buka `script.js`.

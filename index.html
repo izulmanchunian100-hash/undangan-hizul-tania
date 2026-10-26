@@ -12,6 +12,44 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Bingkai botani 3D bergerak di kedua sisi -->
+  <div class="side-frame left" aria-hidden="true">
+    <svg class="botanical-vine" viewBox="0 0 180 1000" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="stemGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4df9c"/><stop offset=".5" stop-color="#71884b"/><stop offset="1" stop-color="#b68a3d"/></linearGradient>
+        <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d6bd70"/><stop offset=".5" stop-color="#738b49"/><stop offset="1" stop-color="#243b25"/></linearGradient>
+        <radialGradient id="petalGold"><stop stop-color="#fff4c9"/><stop offset=".6" stop-color="#d8b56d"/><stop offset="1" stop-color="#94672e"/></radialGradient>
+        <filter id="softGlow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <path class="main-stem" d="M22 -20 C72 70 18 135 57 225 S20 380 67 475 S26 640 77 750 S48 910 100 1020"/>
+      <path class="branch" d="M48 150 Q93 122 100 83 M42 325 Q7 298 9 265 M58 510 Q108 480 120 438 M62 700 Q18 665 13 625 M80 865 Q128 835 139 790"/>
+      <g class="leaf" transform="translate(83 120) rotate(25)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
+      <g class="leaf" transform="translate(35 193) rotate(195)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
+      <g class="leaf" transform="translate(89 290) rotate(18)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
+      <g class="leaf" transform="translate(29 400) rotate(205)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
+      <g class="leaf" transform="translate(100 570) rotate(24)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
+      <g class="leaf" transform="translate(42 660) rotate(200)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
+      <g class="leaf" transform="translate(108 820) rotate(24)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
+      <g class="flower" transform="translate(80 230)"><ellipse cy="-17" rx="10" ry="20"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(60)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(120)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(180)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(240)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(300)"/><circle class="flower-core" r="9"/></g>
+      <g class="flower flower-small" transform="translate(37 470)"><ellipse cy="-17" rx="10" ry="20"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(60)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(120)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(180)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(240)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(300)"/><circle class="flower-core" r="9"/></g>
+      <g class="flower" transform="translate(105 710) scale(.85)"><ellipse cy="-17" rx="10" ry="20"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(60)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(120)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(180)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(240)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(300)"/><circle class="flower-core" r="9"/></g>
+    </svg>
+    <svg class="flying-bird bird-a" viewBox="0 0 100 65"><path d="M5 38 Q25 6 48 30 Q66 5 95 13 Q75 28 64 41 Q42 24 28 45 Q16 51 5 38Z"/><path d="M47 31 Q49 48 35 58 Q54 53 58 39Z"/></svg>
+    <svg class="flying-bird bird-b" viewBox="0 0 100 65"><path d="M5 38 Q25 6 48 30 Q66 5 95 13 Q75 28 64 41 Q42 24 28 45 Q16 51 5 38Z"/><path d="M47 31 Q49 48 35 58 Q54 53 58 39Z"/></svg>
+    <i class="glow-bug bug-one"></i><i class="glow-bug bug-two"></i>
+  </div>
+  <div class="side-frame right" aria-hidden="true">
+    <svg class="botanical-vine" viewBox="0 0 180 1000" preserveAspectRatio="none">
+      <defs><linearGradient id="stemGoldR" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4df9c"/><stop offset=".5" stop-color="#71884b"/><stop offset="1" stop-color="#b68a3d"/></linearGradient><linearGradient id="leafGreenR" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d6bd70"/><stop offset=".5" stop-color="#738b49"/><stop offset="1" stop-color="#243b25"/></linearGradient><radialGradient id="petalGoldR"><stop stop-color="#fff4c9"/><stop offset=".6" stop-color="#d8b56d"/><stop offset="1" stop-color="#94672e"/></radialGradient></defs>
+      <path class="main-stem" d="M22 -20 C72 70 18 135 57 225 S20 380 67 475 S26 640 77 750 S48 910 100 1020"/>
+      <path class="branch" d="M48 150 Q93 122 100 83 M42 325 Q7 298 9 265 M58 510 Q108 480 120 438 M62 700 Q18 665 13 625 M80 865 Q128 835 139 790"/>
+      <g class="leaf" transform="translate(83 120) rotate(25)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g><g class="leaf" transform="translate(35 193) rotate(195)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g><g class="leaf" transform="translate(89 290) rotate(18)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g><g class="leaf" transform="translate(29 400) rotate(205)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g><g class="leaf" transform="translate(100 570) rotate(24)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g><g class="leaf" transform="translate(42 660) rotate(200)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g><g class="leaf" transform="translate(108 820) rotate(24)"><path d="M0 0 C-29 -37 -53 -19 -43 3 C-28 18 -9 13 0 0Z"/></g>
+      <g class="flower" transform="translate(80 230)"><ellipse cy="-17" rx="10" ry="20"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(60)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(120)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(180)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(240)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(300)"/><circle class="flower-core" r="9"/></g><g class="flower flower-small" transform="translate(37 470)"><ellipse cy="-17" rx="10" ry="20"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(60)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(120)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(180)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(240)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(300)"/><circle class="flower-core" r="9"/></g><g class="flower" transform="translate(105 710) scale(.85)"><ellipse cy="-17" rx="10" ry="20"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(60)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(120)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(180)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(240)"/><ellipse cy="-17" rx="10" ry="20" transform="rotate(300)"/><circle class="flower-core" r="9"/></g>
+    </svg>
+    <svg class="flying-bird bird-a" viewBox="0 0 100 65"><path d="M5 38 Q25 6 48 30 Q66 5 95 13 Q75 28 64 41 Q42 24 28 45 Q16 51 5 38Z"/><path d="M47 31 Q49 48 35 58 Q54 53 58 39Z"/></svg><svg class="flying-bird bird-b" viewBox="0 0 100 65"><path d="M5 38 Q25 6 48 30 Q66 5 95 13 Q75 28 64 41 Q42 24 28 45 Q16 51 5 38Z"/><path d="M47 31 Q49 48 35 58 Q54 53 58 39Z"/></svg><i class="glow-bug bug-one"></i><i class="glow-bug bug-two"></i>
+  </div>
+
   <div class="ambient" aria-hidden="true">
     <span class="orb orb-one"></span><span class="orb orb-two"></span>
     <div class="sparkles" id="sparkles"></div>
